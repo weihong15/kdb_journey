@@ -10,7 +10,7 @@ Table of Contents
 * [actions after opening and closing .z.po .z.pc](#open-and-close-connections-zpo-zpc)
 * [synchronous and async actions .z.pg .z.ps](#port-getsynchronous-and-port-setasync-zpg--zps)
 * [How to do an sync/async call](#how-to-do-a-syncasync-call)
-
+* [Expunging/Removing Values](#expunging/removing-values)
 
 ## Listening on a port
 
@@ -120,4 +120,11 @@ q)neg[h]"a:10"
 / – Process 1 --/
 q)a 
 10
+```
+
+## Expunging/Removing Values
+
+```
+\x .z.po     \\this will expunge the value, default no actions
+\x .z.ps     \\this will expunge the value too, default .z.ps:value
 ```
