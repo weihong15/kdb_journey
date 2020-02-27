@@ -7,8 +7,8 @@ Table of Contents
 * [Listening on a port](#listening-on-a-port)
 * [Check what port is it listening to](#check-listening-port)
 * [How to open handle and close handle](#opening-and-closing-handle-to-another-location)
-* [.z.po .z.pc](#open-and-close-connections-zpo-zpc)
-* [synchronous and async actions](#port-getsynchronous-and-port-setasync-zpg--zps)
+* [actions after opening and closing .z.po .z.pc](#open-and-close-connections-zpo-zpc)
+* [synchronous and async actions .z.pg .z.ps](#port-getsynchronous-and-port-setasync-zpg--zps)
 * [How to do an sync/async call](#how-to-do-a-syncasync-call)
 
 
