@@ -10,7 +10,7 @@ Table of Contents
 * [actions after opening and closing .z.po .z.pc](#open-and-close-connections-zpo-zpc)
 * [synchronous and async actions .z.pg .z.ps](#port-getsynchronous-and-port-setasync-zpg--zps)
 * [How to do an sync/async call](#how-to-do-a-syncasync-call)
-* [Expunging/Removing Values](#expunging/removing-values)
+* [Expunging/Removing Values](#expungingremoving-values)
 
 ## Listening on a port
 
