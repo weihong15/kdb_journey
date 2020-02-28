@@ -11,6 +11,8 @@ Table of Contents
 * [synchronous and async actions .z.pg .z.ps](#port-getsynchronous-and-port-setasync-zpg--zps)
 * [How to do an sync/async call](#how-to-do-a-syncasync-call)
 * [Expunging/Removing Values](#expungingremoving-values)
+* [Executing across multiple handles]
+* [.z name space for IPC]
 
 ## Listening on a port
 
@@ -46,7 +48,7 @@ q)h:hclose h                                // close a connection
 ```
 
 ## Open and close connections (.z.po .z.pc)
-
+When process die, all handle close too
 ``` 
 .u.conns:() //empty list
 .z.po:{0N!"Connection opened on handle ",string x; .u.conns,:x}   //the handle will be passed as an arguement
@@ -61,7 +63,7 @@ q)h:hclose h                                // close a connection
 ```
 
 ## How to do a sync/async call
-
+Positive is sync while negative handles are async
 ```
 / – Process 1 --/
 q)\p 5000
@@ -122,9 +124,85 @@ q)a
 10
 ```
 
+## Different method for sync/async call
+Method 1: string method
+```
+h"a:10"         //defining 10 across the handle
+```
+Method 2: symbol method, only useful for getting values
+```
+q)h`a         //retrieve value of a form across the server
+10
+```
+Method 3: list method
+```
+q)h(`dividing;8;5)   //dividing must exist on the server, so add symbol
+1.6
+q)h("dividing";8;5)     //same as the symbol of it, exist on server
+1.6
+q)h(dividing;8;5)    //will error out if dividing does not exist locally. i.e. local call
+```
+
 ## Expunging/Removing Values
 
 ```
 \x .z.po     \\this will expunge the value, default no actions
 \x .z.ps     \\this will expunge the value too, default .z.ps:value
+```
+
+## Executing across multiple handles
+process 1: main or client
+process 2,3,4: listening on port 5001,5002,5003 respectively , server
+```
+q)h:hopen each 5001 5002 5003
+q)h
+3 4 5i
+q)h[0]"a:1"         //define a in first process only
+q)h@\:"a:15"        //define a:15 on all processes @\:
+::
+::
+::
+q)h@\:"a+15"            //sync call across handles
+20 20 20
+q)neg[h]@\:"a:15"       //async call across handles
+::
+::
+::
+q)neg[h]@\:(0N!;"Hello")    //async call using list method, all other process print hello
+::
+::
+::
+```
+
+## .z namespace for IPC
+.z.w will normally return 0, if triggered by other process, return handle number //on server //return handle of calling client process  
+.z.W will return each handle opened for that process, and the data left to transmit //can be called by client or server
+
+## News agency case study
+Imagine u are a news agency and you have different users subscribing to you  
+Process 1: News agency
+Process 2,3: Users
+```
+/ – Process 1 --/
+\p 5000
+.u.news:()!()           /dictionary, (topics)!(handles)
+.u.register:{[topic] .u.new[topic],:.z.w;}          /for users to call to register for news
+.z.pc:{[h] .u.news:.u.news except\:h}               /if handle close by user(forcefully or intentionally), remove from news
+
+/ – Process 2 --/
+q)h:hopen 5000          //handle 10
+q)h(`.u.register;`sport)
+
+/ – Process 3 --/
+q)h:hopen 5000          //handle 15
+q)h(`.u.register;`sport)
+q)h(`.u.register;`weather)
+
+/ – Process 1 --/
+q).u.news
+sport   | 10 15i
+weather | 15i
+
+q)msg:"wa lao, refree kayu for soccer"
+q).u.news[`sport]@\:(0N!;msg)           //msg will be printed to both Process 2,3
 ```
