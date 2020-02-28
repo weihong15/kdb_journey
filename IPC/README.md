@@ -1,18 +1,21 @@
 # Learning kdb
 
-References use, Month 1 resource, Q4M
+References use, Month 1 resource, Q4M  
+Note, Clients connect to server
 Table of Contents
 =================
 
-* [Listening on a port](#listening-on-a-port)
-* [Check what port is it listening to](#check-listening-port)
+* [Setting port to listen to](#listening-on-a-port)
+* [Check port listening to](#check-listening-port)
 * [How to open handle and close handle](#opening-and-closing-handle-to-another-location)
 * [actions after opening and closing .z.po .z.pc](#open-and-close-connections-zpo-zpc)
 * [synchronous and async actions .z.pg .z.ps](#port-getsynchronous-and-port-setasync-zpg--zps)
 * [How to do an sync/async call](#how-to-do-a-syncasync-call)
+* [Three different ways to do sync/async call](#different-method-for-syncasync-call)
 * [Expunging/Removing Values](#expungingremoving-values)
-* [Executing across multiple handles]
-* [.z name space for IPC]
+* [How to executing across multiple handles](#executing-across-multiple-handles)
+* [.z name space for IPC](#z-namespace-for-ipc)
+* [Case Study:New agencies and it's subscriber](#news-agency-case-study)
 
 ## Listening on a port
 
@@ -151,7 +154,7 @@ q)h(dividing;8;5)    //will error out if dividing does not exist locally. i.e. l
 ```
 
 ## Executing across multiple handles
-process 1: main or client
+process 1: main or client  
 process 2,3,4: listening on port 5001,5002,5003 respectively , server
 ```
 q)h:hopen each 5001 5002 5003
