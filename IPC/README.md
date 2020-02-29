@@ -1,11 +1,9 @@
-# Learning kdb
-
 References use, Month 1 resource, Q4M  
-Note, Clients connect to server
+Note to self, Clients connect to server(Master)
+
 Table of Contents
 =================
 
-- [Learning kdb](#learning-kdb)
 - [Table of Contents](#table-of-contents)
   - [Listening on a port](#listening-on-a-port)
   - [Check Listening Port](#check-listening-port)
