@@ -8,6 +8,7 @@ Table of Contents
   - [Listening on a port](#listening-on-a-port)
   - [Check Listening Port](#check-listening-port)
   - [Opening and closing handle to another location](#opening-and-closing-handle-to-another-location)
+    - [permutations of hopen](#permutations-of-hopen)
   - [Open and close connections (.z.po .z.pc)](#open-and-close-connections-zpo-zpc)
   - [Port Get(Synchronous) and Port Set(Async) .z.pg  .z.ps](#port-getsynchronous-and-port-setasync-zpg-zps)
   - [How to do a sync/async call](#how-to-do-a-syncasync-call)
@@ -49,6 +50,22 @@ q)h:hopen 5000
 q)h:hclose h                                // close a connection
 
 ```
+### permutations of hopen
+https://code.kx.com/q/ref/hopen/
+```
+port
+`::port                                     // `:localhost:5000:geoffrey:geffspasswd  // user and password
+`:host:port[:user:password]                 // `:10.43.23.198:5010 / IP address
+`:unix://port[:user:password]               // `:unix://5010   / localhost, Unix domain socket(god knows what it means)
+`:tcps://host:port[:user:password]          // `:tcps://mydb.us.com:5010    / SSL/TLS with hostname
+`:host:port:user:password;timeout           //time out in milli seconds     / full arg list, 10s timeout
+
+//might not be relavant but below are handles to files
+`:file_path
+“:filename”
+`:fifo://fileName
+```
+
 
 ## Open and close connections (.z.po .z.pc)
 When process die, all handle close too
@@ -178,7 +195,7 @@ q)neg[h]@\:(0N!;"Hello")    //async call using list method, all other process pr
 ```
 
 ## .z namespace for IPC
-.z.w will normally return 0, if triggered by other process, return handle number //on server //even if nested function, but called by .z.pg,.z.ps will work
+.z.w will normally return 0, if triggered by other process, return handle number //on server //even if nested function, but called by .z.pg,.z.ps will work  
 .z.W will return each handle opened for that process, and the data left to transmit //can be called by client or server
 
 ## News agency case study
