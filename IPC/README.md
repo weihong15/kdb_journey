@@ -5,17 +5,19 @@ Note, Clients connect to server
 Table of Contents
 =================
 
-* [Setting port to listen to](#listening-on-a-port)
-* [Check port listening to](#check-listening-port)
-* [How to open handle and close handle](#opening-and-closing-handle-to-another-location)
-* [actions after opening and closing .z.po .z.pc](#open-and-close-connections-zpo-zpc)
-* [synchronous and async actions .z.pg .z.ps](#port-getsynchronous-and-port-setasync-zpg--zps)
-* [How to do an sync/async call](#how-to-do-a-syncasync-call)
-* [Three different ways to do sync/async call](#different-method-for-syncasync-call)
-* [Expunging/Removing Values](#expungingremoving-values)
-* [How to executing across multiple handles](#executing-across-multiple-handles)
-* [.z name space for IPC](#z-namespace-for-ipc)
-* [Case Study:New agencies and it's subscriber](#news-agency-case-study)
+- [Learning kdb](#learning-kdb)
+- [Table of Contents](#table-of-contents)
+  - [Listening on a port](#listening-on-a-port)
+  - [Check Listening Port](#check-listening-port)
+  - [Opening and closing handle to another location](#opening-and-closing-handle-to-another-location)
+  - [Open and close connections (.z.po .z.pc)](#open-and-close-connections-zpo-zpc)
+  - [Port Get(Synchronous) and Port Set(Async) .z.pg  .z.ps](#port-getsynchronous-and-port-setasync-zpg-zps)
+  - [How to do a sync/async call](#how-to-do-a-syncasync-call)
+  - [Different method for sync/async call](#different-method-for-syncasync-call)
+  - [Expunging/Removing Values](#expungingremoving-values)
+  - [Executing across multiple handles](#executing-across-multiple-handles)
+  - [.z namespace for IPC](#z-namespace-for-ipc)
+  - [News agency case study](#news-agency-case-study)
 
 ## Listening on a port
 
@@ -178,7 +180,7 @@ q)neg[h]@\:(0N!;"Hello")    //async call using list method, all other process pr
 ```
 
 ## .z namespace for IPC
-.z.w will normally return 0, if triggered by other process, return handle number //on server //return handle of calling client process  
+.z.w will normally return 0, if triggered by other process, return handle number //on server //even if nested function, but called by .z.pg,.z.ps will work
 .z.W will return each handle opened for that process, and the data left to transmit //can be called by client or server
 
 ## News agency case study
