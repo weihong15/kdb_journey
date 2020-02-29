@@ -1,4 +1,4 @@
-References use, Month 1 resource, Q4M  
+References used: Month 1 resource, Q4M  
 Note to self, Clients connect to server(Master)
 
 Table of Contents
