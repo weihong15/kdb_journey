@@ -10,7 +10,7 @@ Table of Contents
   - [Opening and closing handle to another location](#opening-and-closing-handle-to-another-location)
     - [permutations of hopen](#permutations-of-hopen)
   - [Open and close connections (.z.po .z.pc)](#open-and-close-connections-zpo-zpc)
-  - [Port Get(Synchronous) and Port Set(Async) .z.pg  .z.ps](#port-getsynchronous-and-port-setasync-zpg-zps)
+  - [Port Get(Synchronous) and Port Set(Async) .z.pg .z.ps](#port-getsynchronous-and-port-setasync-zpg-zps)
   - [How to do a sync/async call](#how-to-do-a-syncasync-call)
   - [Different method for sync/async call](#different-method-for-syncasync-call)
   - [Expunging/Removing Values](#expungingremoving-values)
@@ -75,7 +75,7 @@ When process die, all handle close too
 .z.pc:{0N!"Connection closed on handle ",string x; .u.conns:.u.conns except x}
 ```
 
-## Port Get(Synchronous) and Port Set(Async) .z.pg  .z.ps
+## Port Get(Synchronous) and Port Set(Async) .z.pg .z.ps
 
 ```
 .z.pg:{0N!"Running Sync querry ",string x; get x}
