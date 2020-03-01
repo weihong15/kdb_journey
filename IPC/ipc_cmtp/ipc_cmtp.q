@@ -9,3 +9,5 @@ storedProcedure:`add`minus`times`divide
 ipcLog:([] handle:`int$(); IP:`$(); username:`$(); flag:`$(); timeTaken:`long$(); message:());
 .z.pg:{time:system "t";`ipcLog insert (.z.w; `$"." sv string "i"$0x0 vs .z.a; .z.u; `sync; time; x); value x};
 .z.ps:{`ipcLog insert (.z.w; `$"." sv string "i"$0x0 vs .z.a; .z.u; `async; system "t"; x); value x};
+//Q9
+.z.po:{`dict set x({system["f"]!value each system "f"};`)}
