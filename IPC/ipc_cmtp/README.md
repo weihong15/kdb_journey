@@ -32,6 +32,27 @@ q)h(`dividing;8;5)
 q)h(`divide;8;5)
 1.6
 ```
+### Question 8
+```
+/ – Process 1 --/
+system "p 5000"
+/ – Process 2 --/
+q)h"1+5" 
+6
+q)h(add;7;2)
+9
+q)h(*;7;2)   
+14
+q)neg[h](*;7;2) 
+/ – Process 1 --/
+q)ipcLog
+handle IP        username flag  timeTaken message  
+---------------------------------------------------
+600    127.0.0.1 Weihong  sync  0         1     + 5
+600    127.0.0.1 Weihong  sync  0         {x+y} 7 2
+600    127.0.0.1 Weihong  sync  0         *     7 2
+600    127.0.0.1 Weihong  async 0         *     7 2
+```
 ### Question 9
 ```
 / – Process 1 --/
