@@ -2,6 +2,7 @@
 
 Table of Contents
 =================
+
 *[Multi-line comments](#multi-line-comments)
 *[Syntax rules and convention](#syntax-rules-and-conventions)
 **[parentheses](#parentheses)
