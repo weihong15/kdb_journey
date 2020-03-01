@@ -2,6 +2,12 @@
 
 Table of Contents
 =================
+-[Multi-line comments](#multi-line-comments)
+-[Syntax rules and convention](#syntax-rules-and-conventions)
+    -[parentheses](#parentheses)
+    -[Semicolon](#semicolon)
+    -[importance leading whitespace](#leading-whitespace)
+    -[Confusing statements between Min,Max, "&" and "|"]
 
 
 
@@ -23,12 +29,12 @@ Useful to create lists, order precedence
 * end of line function
 
 #### Leading WhiteSpace
-* Multi-line function, need to have at least a whitspace infront
+* Multi-line function, need to have at least a whitspace infront  
 * No white-space = new statement/function
 
 #### Confusing Min and Max
-Confusing terms: "&" and "|"
-bitwise MIN and MAX
+Confusing terms: "&" and "|"  
+bitwise MIN and MAX  
 Note that they both have two arguements
 ```
 q)0101b & 1111b
