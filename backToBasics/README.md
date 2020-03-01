@@ -2,12 +2,12 @@
 
 Table of Contents
 =================
--[Multi-line comments](#multi-line-comments)
--[Syntax rules and convention](#syntax-rules-and-conventions)
-    -[parentheses](#parentheses)
-    -[Semicolon](#semicolon)
-    -[importance leading whitespace](#leading-whitespace)
-    -[Confusing statements between Min,Max, "&" and "|"]
+*[Multi-line comments](#multi-line-comments)
+*[Syntax rules and convention](#syntax-rules-and-conventions)
+**[parentheses](#parentheses)
+**[Semicolon](#semicolon)
+**[importance leading whitespace](#leading-whitespace)
+**[Confusing statements between Min,Max, "&" and "|"](#confusing-min-and-max)
 
 
 
