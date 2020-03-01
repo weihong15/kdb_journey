@@ -15,7 +15,7 @@ callback:{[clientHandle;result]
    result:pending[clientHandle][;1]; / grab the error strings or results
    //a::result;
    / send the first error or the reduced result
-   r:$[isError;{first x where 10h=type each x};::]result; 
+   r:$[isError;{first x where 10h=type each x};reduceFunction]result; 
    -30!(clientHandle;isError;r); 
    pending[clientHandle]:(); / clear the temp results
  ]
