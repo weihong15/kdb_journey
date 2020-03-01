@@ -32,3 +32,18 @@ q)h(`dividing;8;5)
 q)h(`divide;8;5)
 1.6
 ```
+### Question 9
+```
+/ – Process 1 --/
+system "p 5000"
+.z.po:{`dict set x({system["f"]!value each system "f"};`)}
+/ – Process 2 --/
+q)add:{x+y};minus:{x-y};times:{x*y};divide:{x%y}
+q)h:hopen 5000
+/ – Process 1 --/
+q)dict
+add   | {x+y}
+divide| {x%y}
+minus | {x-y}
+times | {x*y}
+```
