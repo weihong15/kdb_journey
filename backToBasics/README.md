@@ -1,4 +1,7 @@
 ## Basics
+https://alexanderrodin.com/github-latex-markdown/?math=I%5B%5C%7Bx%5C%7D%20%5Csubset%20%5Cmathbb%20R%5D
+https://gist.github.com/a-rodin/fef3f543412d6e1ec5b6cf55bf197d7b
+
 
 Table of Contents
 =================
@@ -164,3 +167,11 @@ q)shuffle:{deck::-52?deck;};shuffle`    //shuffle cards, hidden
 #### Seed
 To set seed, \S 100         //setting seed to 100  
 However, seeding at 0 makes random stuff always 0
+
+### Functions
+
+#### Generating random normal variable
+
+##### Approximation from 12 Uniforms
+
+The idea is by CLT, 12*U[0,1] - 6 approx N(0,1)
