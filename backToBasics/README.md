@@ -1,5 +1,5 @@
 ## Basics
-https://alexanderrodin.com/github-latex-markdown/?math=I%5B%5C%7Bx%5C%7D%20%5Csubset%20%5Cmathbb%20R%5D
+https://alexanderrodin.com/github-latex-markdown/?math=I%5B%5C%7Bx%5C%7D%20%5Csubset%20%5Cmathbb%20R%5D  
 https://gist.github.com/a-rodin/fef3f543412d6e1ec5b6cf55bf197d7b
 
 
@@ -174,4 +174,9 @@ However, seeding at 0 makes random stuff always 0
 
 ##### Approximation from 12 Uniforms
 
-The idea is by CLT, 12*U[0,1] - 6 approx N(0,1)
+The idea is by CLT, 12*U[0,1] - 6 approx N(0,1). Let <img src="https://render.githubusercontent.com/render/math?math=X%3D12*U%5B0%2C1%5D-6">. Then <img src="https://render.githubusercontent.com/render/math?math=E%5BX%5D%3D12*E%5BU%5D-6%3D0">.  
+<img src="https://render.githubusercontent.com/render/math?math=Var(X)%3D12*Var(U)%3D1"> As U are iid
+
+
+
+
