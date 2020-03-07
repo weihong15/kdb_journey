@@ -1,7 +1,9 @@
 ## Basics
+
 https://alexanderrodin.com/github-latex-markdown/?math=I%5B%5C%7Bx%5C%7D%20%5Csubset%20%5Cmathbb%20R%5D  
 https://gist.github.com/a-rodin/fef3f543412d6e1ec5b6cf55bf197d7b
 
+Functions that might be included in stat library: skew, kertosis, percentile
 
 Table of Contents
 =================
@@ -105,6 +107,7 @@ q)yz
 q)prd yz
 6 24 60 120 210 336 504 720 990 1320    //Matrix -> list
 ```
+Note that aggregating function for 2D, is on columns, treat is as v1 *v2*v3 = element wise
 
 ### Random data, generate,deal, rand
 Generate: replacement, deal: without replacement, rand: one single value of generate  
@@ -174,9 +177,70 @@ However, seeding at 0 makes random stuff always 0
 
 ##### Approximation from 12 Uniforms
 
-The idea is by CLT, 12*U[0,1] - 6 approx N(0,1). Let <img src="https://render.githubusercontent.com/render/math?math=X%3D12*U%5B0%2C1%5D-6">. Then <img src="https://render.githubusercontent.com/render/math?math=E%5BX%5D%3D12*E%5BU%5D-6%3D0">.  
+The idea is by CLT, 12*U[0,1] - 6 approx N(0,1).  
+Let <img src="https://render.githubusercontent.com/render/math?math=X%3D12*U%5B0%2C1%5D-6">.  
+Then <img src="https://render.githubusercontent.com/render/math?math=E%5BX%5D%3D12*E%5BU%5D-6%3D0">.  
 <img src="https://render.githubusercontent.com/render/math?math=Var(X)%3D12*Var(U)%3D1"> As U are iid
 
+```
+q)u12:{-6f+sum 12?1f}
+q)u12
+{-6f+sum 12?1f}
+q)u12`
+-0.1734415
+```
+
+##### Reference count(-16!)
+This is to see how many variables have the same reference
+```
+q)u12:{-6f+sum 12?1f}
+q)u13:u14:u12
+q)-16!u13
+3i
+q)u14:{"useless function"}
+q)-16!u13
+2i
+```
+
+#### We upgrade u12 function to accept an arguement x, where x is the number of normal variables needed
+
+```
+u12:{-6f+sum x cut (12*x)?1f}
+q)(5 cut x)~0N 5#x
+1b
+```
+We first generate 12*x uniform variables, and cut into x columns(consequently 12 rows), we sum columnwise to get list of len x, we subtract 6 to every element of list.
 
 
+#### Box-Muller
+Box-Muller converts 2 uniform rndm variates into a pair of normal rand variable. 
+
+```
+bm:{
+if[count[x] mod 2;'length];
+x:2 0N#x;
+r:sqrt -2f*log x 0;
+theta:2f*acos[-1]*x 1;
+x: r*cos theta;
+x,:r*sin theta;
+x}
+```
+
+##### Exception
+The single quote "'" is used to report the exception, while the symbol that follows it defines what the exception will report.  
+A string can also be used after '
+
+```
+q)'`len
+'len
+  [0]  '`len
+        ^
+q)'len
+'len
+  [0]  'len
+        ^
+q)'"len"
+'len
+  [0]  '"len"
+```
 
