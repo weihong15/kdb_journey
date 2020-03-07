@@ -14,8 +14,18 @@ Table of Contents
     - [Semicolon](#semicolon)
     - [Leading WhiteSpace](#leading-whitespace)
     - [Confusing Min and Max](#confusing-min-and-max)
-
-
+  - [Set or global](#using-set-or-global)
+  - [Aggregating Funcs](#aggregating-functions)
+  - [Generating Random Data](#random-data-generatedeal-rand)
+  - [Generating Random unordered Data, string/guid/list](#generating-unordered-data-stringguidlist)
+    - [Deck of cards Example](#deck-example)
+  - [Functions](#functions)
+    - [Generating random normal variable](#generating-random-normal-variable)
+      - [12 Uniforms method](#approximation-from-12-uniforms)
+      - [Reference Count -16!, counting number of object with same reference](#reference-count-16)
+      - [Upgrading 12 U method, generating N random normal](#we-upgrade-u12-function-to-accept-an-arguement-x-where-x-is-the-number-of-normal-variables-needed)
+    - [Box Muller method to standard normal](#box-muller)
+      - [Exception single apostrophe '](#exception)
 
 ### Multi-line comments
 ```
@@ -229,7 +239,6 @@ x}
 ##### Exception
 The single quote "'" is used to report the exception, while the symbol that follows it defines what the exception will report.  
 A string can also be used after '
-
 ```
 q)'`len
 'len
@@ -243,4 +252,3 @@ q)'"len"
 'len
   [0]  '"len"
 ```
-
