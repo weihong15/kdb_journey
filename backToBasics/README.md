@@ -3,7 +3,8 @@
 https://alexanderrodin.com/github-latex-markdown/?math=I%5B%5C%7Bx%5C%7D%20%5Csubset%20%5Cmathbb%20R%5D  
 https://gist.github.com/a-rodin/fef3f543412d6e1ec5b6cf55bf197d7b
 
-Functions that might be included in stat library: skew, kertosis, percentile
+Functions that might be included in stat library: skew, kertosis, percentile  
+Similar functions, cut drop and take. (reshaping)
 
 Table of Contents
 =================
@@ -219,7 +220,8 @@ u12:{-6f+sum x cut (12*x)?1f}
 q)(5 cut x)~0N 5#x
 1b
 ```
-We first generate 12*x uniform variables, and cut into x columns(consequently 12 rows), we sum columnwise to get list of len x, we subtract 6 to every element of list.
+We first generate 12*x uniform variables, and cut into x columns(consequently 12 rows), we sum columnwise to get list of len x, we subtract 6 to every element of list.  
+
 
 
 #### Box-Muller
@@ -252,3 +254,8 @@ q)'"len"
 'len
   [0]  '"len"
 ```
+
+#### Beasley-Springer-Moro
+
+Transform a single uniform random variable using polynomial approximation(Horner) to computer inverse CDF of normal. the transformation is divided into two region, central region or tail region which uses a Chebyshev approximation proposed by Boris Moro  
+
